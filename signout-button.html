@@ -1,0 +1,19 @@
+ <div ng-app="myApp" ng-controller="myCtrl">
+ 	<button ng-click="Signout();">Sign Out</button>
+ </div>
+ <script>
+   var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+	$scope.Signout=function()
+	{
+		  $http.get("localhost:3000/api/auth/signout")
+         .success(function(response) {
+           $http.get("localhost:3000/");
+         })
+         .error(function(error){
+
+         });
+	}
+   
+});
+</script>
